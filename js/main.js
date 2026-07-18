@@ -11,6 +11,22 @@
   var success = document.getElementById('success');
   var textarea = form.querySelector('textarea[name="comment"]');
 
+  var reduceMotion = window.matchMedia &&
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  var revealObserver = ('IntersectionObserver' in window) && !reduceMotion
+    ? new IntersectionObserver(function (entries, obs) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-in');
+            obs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15 })
+    : null;
+
+  function pad(n) { return n < 10 ? '0' + n : '' + n; }
+
   function formatPrice(n) {
     return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ') + ' ₽';
   }
@@ -44,17 +60,24 @@
       return;
     }
 
-    visible.forEach(function (p) {
+    visible.forEach(function (p, i) {
+      var num = pad(products.indexOf(p) + 1);
       var card = document.createElement('button');
-      card.className = 'card';
+      card.className = reduceMotion ? 'card' : 'card reveal';
       card.type = 'button';
       card.innerHTML =
         '<span class="card__media"><img src="' + p.img + '" alt="' + p.name + '"></span>' +
+        '<span class="card__num">' + num + '</span>' +
         '<span class="card__name">' + p.name + '</span>' +
         '<span class="card__meta">' + p.type + ' · ' + p.style + '</span>' +
         '<span class="card__price">' + formatPrice(p.price) + '</span>';
       card.addEventListener('click', function () { openModal(p); });
       grid.appendChild(card);
+
+      if (revealObserver) {
+        card.style.transitionDelay = Math.min(i, 7) * 60 + 'ms';
+        revealObserver.observe(card);
+      }
     });
   }
 
@@ -95,12 +118,24 @@
     };
 
     modal.hidden = false;
+    modal.classList.remove('is-closing');
+    modal.classList.add('is-open');
     document.body.style.overflow = 'hidden';
   }
 
   function closeModal() {
-    modal.hidden = true;
     document.body.style.overflow = '';
+    if (reduceMotion) {
+      modal.classList.remove('is-open');
+      modal.hidden = true;
+      return;
+    }
+    modal.classList.remove('is-open');
+    modal.classList.add('is-closing');
+    window.setTimeout(function () {
+      modal.classList.remove('is-closing');
+      modal.hidden = true;
+    }, 250);
   }
 
   modal.addEventListener('click', function (e) {

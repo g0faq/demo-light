@@ -1,9 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" fill="none" stroke="#111" stroke-width="1.25">
-  <line x1="70" y1="90" x2="70" y2="310"/>
-  <line x1="52" y1="90" x2="88" y2="90"/>
-  <line x1="52" y1="310" x2="88" y2="310"/>
-  <line x1="70" y1="200" x2="150" y2="200"/>
-  <path d="M150 160 h100 l14 24 v52 l-14 24 h-100 z"/>
-  <line x1="150" y1="184" x2="264" y2="184"/>
-  <line x1="150" y1="236" x2="264" y2="236"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" fill="none" stroke="#111" stroke-width="1">
+  <line x1="120" y1="140" x2="120" y2="260"/>
+  <line x1="108" y1="140" x2="132" y2="140"/>
+  <line x1="108" y1="260" x2="132" y2="260"/>
+  <line x1="120" y1="200" x2="160" y2="200"/>
+  <path d="M160 168 h84 l14 20 v24 l-14 20 h-84 z"/>
+  <circle cx="216" cy="200" r="3" fill="#111" stroke="none"/>
 </svg>
