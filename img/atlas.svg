@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" fill="none" stroke="#111" stroke-width="1.25">
+  <path d="M140 150 h120 l20 -70 h-160 z"/>
+  <line x1="120" y1="150" x2="280" y2="150"/>
+  <line x1="200" y1="150" x2="200" y2="335"/>
+  <line x1="200" y1="230" x2="184" y2="230"/>
+  <line x1="200" y1="250" x2="184" y2="250"/>
+  <ellipse cx="200" cy="345" rx="55" ry="14"/>
+</svg>

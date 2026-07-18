@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ателье света — дизайнерские светильники</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400&display=swap&subset=cyrillic" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+  <header class="header">
+    <div class="wrap header__inner">
+      <a href="#" class="header__logo">АТЕЛЬЕ СВЕТА</a>
+      <a href="#request" class="header__link">Оставить заявку</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero wrap">
+      <h1 class="hero__title">Свет для интерьера</h1>
+      <p class="hero__line">Подбор · Поставка · Монтаж</p>
+    </section>
+
+    <section class="catalog wrap">
+      <div class="filters" id="filters">
+        <div class="filters__group">
+          <span class="filters__label">Тип</span>
+          <div class="filters__row" data-filter="type">
+            <button class="chip is-active" data-value="all">Все</button>
+            <button class="chip" data-value="Подвес">Подвес</button>
+            <button class="chip" data-value="Бра">Бра</button>
+            <button class="chip" data-value="Торшер">Торшер</button>
+            <button class="chip" data-value="Настольная">Настольная</button>
+          </div>
+        </div>
+        <div class="filters__group">
+          <span class="filters__label">Стиль</span>
+          <div class="filters__row" data-filter="style">
+            <button class="chip is-active" data-value="all">Все</button>
+            <button class="chip" data-value="Минимализм">Минимализм</button>
+            <button class="chip" data-value="Лофт">Лофт</button>
+            <button class="chip" data-value="Классика">Классика</button>
+          </div>
+        </div>
+        <div class="filters__group">
+          <span class="filters__label">Цена</span>
+          <div class="filters__row" data-filter="price">
+            <button class="chip is-active" data-value="all">Все</button>
+            <button class="chip" data-value="lt15">до 15 000</button>
+            <button class="chip" data-value="15-40">15–40 000</button>
+            <button class="chip" data-value="gt40">от 40 000</button>
+          </div>
+        </div>
+      </div>
+
+      <p class="counter" id="counter">Показано 8 из 8</p>
+
+      <div class="grid" id="grid"></div>
+    </section>
+
+    <section class="request wrap" id="request">
+      <h2 class="request__title">Заявка на расчёт</h2>
+      <form class="form" id="form" novalidate>
+        <label class="field">
+          <span class="field__label">Имя</span>
+          <input type="text" name="name" class="field__input" autocomplete="name">
+          <span class="field__error" data-error="name"></span>
+        </label>
+        <label class="field">
+          <span class="field__label">Телефон или Telegram</span>
+          <input type="text" name="contact" class="field__input" autocomplete="off">
+          <span class="field__error" data-error="contact"></span>
+        </label>
+        <label class="field">
+          <span class="field__label">Комментарий</span>
+          <textarea name="comment" class="field__input field__textarea" rows="4"></textarea>
+        </label>
+        <button type="submit" class="btn">Отправить заявку</button>
+      </form>
+      <div class="success" id="success" hidden>
+        <h3 class="success__title">Запрос принят</h3>
+        <p class="success__text">Мы свяжемся с вами по указанному контакту.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">Ателье света · demo project</div>
+  </footer>
+
+  <div class="modal" id="modal" hidden>
+    <div class="modal__backdrop" data-close></div>
+    <div class="modal__dialog" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <button class="modal__close" data-close aria-label="Закрыть">×</button>
+      <div class="modal__media"><img id="modal-img" src="" alt=""></div>
+      <div class="modal__body">
+        <h3 class="modal__name" id="modal-title"></h3>
+        <p class="modal__meta" id="modal-meta"></p>
+        <p class="modal__price" id="modal-price"></p>
+        <p class="modal__desc" id="modal-desc"></p>
+        <dl class="specs" id="modal-specs"></dl>
+        <button class="btn" id="modal-request">Запросить цену</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>
